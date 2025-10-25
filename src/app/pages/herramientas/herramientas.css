@@ -1,0 +1,98 @@
+/* ======== CONTENEDOR GENERAL ======== */
+.productos-container {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
+}
+
+/* ======== BANNER ======== */
+.imagen-fondo {
+  width: 100vw; /* ocupa todo el ancho */
+  height: 90vh; /* más largo (puedes usar 100vh si quieres que cubra todo) */
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+.imagen-fondo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* se adapta sin deformar */
+  display: block;
+}
+
+/* ======== CONTENEDOR DE LAS CARDS ======== */
+.cards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 35px;
+  margin-top: 70px; /* espacio debajo del banner */
+  padding: 0 20px 60px 20px;
+}
+
+/* ======== CARD ======== */
+.card {
+  background: #fff;
+  border-radius: 15px;
+  width: 250px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* ======== TEXTO ======== */
+.card h3 {
+  font-size: 1.1rem;
+  color: #222;
+  margin: 15px 0 5px;
+}
+
+.precio {
+  color: #555;
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+
+/* ======== BOTÓN ======== */
+.card button {
+  background-color: #222;
+  color: #fff;
+  border: none;
+  padding: 10px 0;
+  width: 80%;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease;
+}
+
+.card button:hover {
+  background-color: #000;
+}
+
+/* ======== RESETEO GLOBAL ======== */
+body,
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+}

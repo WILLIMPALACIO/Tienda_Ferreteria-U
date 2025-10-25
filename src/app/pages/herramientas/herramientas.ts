@@ -1,13 +1,14 @@
-import { Detalles } from './../detalles/detalles';
 import { Component } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
+
 @Component({
-  selector: 'app-home',
+  selector: 'app-herramientas',
   imports: [],
-  templateUrl: './home.html',
-  styleUrl: './home.css',
+  templateUrl: './herramientas.html',
+  styleUrl: './herramientas.css'
 })
-export class Home {
+export class Herramientas {
   productos = [
   {
     id: 1,
@@ -33,10 +34,28 @@ export class Home {
     precio: 27000,
     imagen: 'assets/img/nivel.png',
   },
+  {
+    id: 5,
+    nombre: 'Martillo',
+    precio: 32000,
+    imagen: 'assets/img/martillo.png',
+  },
+  {
+    id: 6,
+    nombre: 'Pulidora',
+    precio: 410000,
+    imagen: 'assets/img/pulidora.png',
+  },
+   {
+    id: 7,
+    nombre: 'Taladro',
+    precio: 320000,
+    imagen: 'assets/img/taladro.png',
+  },
 
   ];
 
-  constructor(private router: Router) {}
+   constructor(private router: Router) {}
 
   navigation(id: number) {
     this.router.navigate(['/detalles', id]);

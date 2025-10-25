@@ -19,15 +19,7 @@ export class Detalles {
     tallas: [32, 34, 36, 38, 40],
 
     imagen: [
-      '../../../assets/img/TenisSuperstarBlancos.png',
-      '../../../assets/img/TenisSuperstarBlancos2.png',
-      '../../../assets/img/TenisSuperstarBlancos3.png',
-      '../../../assets/img/TenisSuperstarBlancos4.png',
-      '../../../assets/img/TenisSuperstarBlancos5.png',
-      '../../../assets/img/TenisSuperstarBlancos6.png',
-      '../../../assets/img/TenisSuperstarBlancos7.png',
-      '../../../assets/img/TenisSuperstarBlancos8.png',
-      '../../../assets/img/TenisSuperstarBlancos9.png',
+      'assets/img/taladro.png',
     ],
   };
   //product: any = null;

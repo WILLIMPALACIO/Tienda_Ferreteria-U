@@ -1,84 +1,9 @@
-.footer-adidas {
-  background-color: #000;
-  color: #fff;
+footer {
   font-family: 'Poppins', sans-serif;
-  padding: 50px 20px;
-  line-height: 1.6;
+  letter-spacing: 0.3px;
 }
 
-.footer-top {
-  max-width: 900px;
-  margin: 0 auto 40px auto;
-  text-align: center;
-}
-
-.footer-top h2 {
-  font-size: 1.6rem;
-  margin-bottom: 20px;
-  font-weight: 700;
-}
-
-.footer-top p {
-  font-size: 1rem;
-  margin-bottom: 15px;
-  color: #e5e5e5;
-}
-
-.footer-middle {
-  display: flex;
-  justify-content: center;
-  gap: 60px;
-  flex-wrap: wrap;
-  margin-bottom: 40px;
-}
-
-.footer-column h3 {
-  font-size: 1.1rem;
-  margin-bottom: 15px;
-  font-weight: 600;
-}
-
-.footer-column ul {
-  list-style: none;
-  padding: 0;
-}
-
-.footer-column ul li {
-  margin-bottom: 8px;
-}
-
-.footer-column ul li a {
-  color: #fff;
-  text-decoration: none;
-  font-size: 0.95rem;
-  transition: color 0.2s;
-}
-
-.footer-column ul li a:hover {
-  color: #00ffcc;
-}
-
-.footer-column ul.socials li a {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-weight: 500;
-}
-
-.footer-column ul.socials li a i {
-  font-size: 1.2rem;
-}
-
-.footer-bottom {
-  text-align: center;
-  font-size: 0.85rem;
-  color: #aaa;
-  border-top: 1px solid #333;
-  padding-top: 20px;
-}
-.footer-logo img {
-  width: 130px;
-  height: auto;
-  display: block;
-  margin: 0 auto 30px auto;
+footer a:hover {
+  color: #ffc107 !important;
+  transition: color 0.3s ease;
 }
