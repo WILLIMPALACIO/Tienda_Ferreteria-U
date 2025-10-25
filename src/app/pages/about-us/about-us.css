@@ -100,3 +100,26 @@
     font-size: 0.95rem;
   }
 }
+.about-us {
+  font-family: 'Poppins', sans-serif;
+}
+
+.about-us h2 {
+  letter-spacing: 1px;
+}
+
+.about-us img {
+  max-height: 350px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.card {
+  border-radius: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
