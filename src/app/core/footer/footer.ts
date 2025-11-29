@@ -7,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrl: './footer.css'
 })
 export class Footer {
+  suscribirse(email: string) {
+  console.log('Nuevo suscriptor:', email);
+}
+
 
 }
