@@ -4,7 +4,7 @@ import { AboutUs } from './pages/about-us/about-us';
 import { Detalles } from './pages/detalles/detalles';
 import { Contact } from './pages/contact/contact';
 import { Herramientas } from './pages/herramientas/herramientas';
-import { Component } from '@angular/core';
+import { Carrito } from './pages/carrito/carrito';
 
 export const routes: Routes = [
   {
@@ -26,6 +26,10 @@ export const routes: Routes = [
   {
     component: Detalles,
     path: 'detalles/:id',
+  },
+  {
+    component: Carrito,
+    path: 'carrito',
   },
   
   

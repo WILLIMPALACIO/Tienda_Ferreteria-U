@@ -1,19 +1,13 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { CarritoService } from '../../services/carrito.service';
 
 @Component({
   selector: 'app-navbar',
-  imports: [
-    RouterLink
-  ],
+  imports: [RouterLink],
   templateUrl: './navbar.html',
-  styleUrl: './navbar.css'
+  styleUrl: './navbar.css',
 })
 export class Navbar {
-
-
-  navegate(name:any){
-
-  }
-
+  constructor(public carritoService: CarritoService) {}
 }

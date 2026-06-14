@@ -1,0 +1,41 @@
+<section class="container my-5">
+  <h1 class="text-center fw-bold mb-4">Tu carrito</h1>
+
+  @if (carritoService.carrito().length === 0) {
+    <div class="text-center py-5">
+      <p class="lead text-muted">No tienes productos en el carrito.</p>
+      <a routerLink="/home" class="btn btn-dark mt-3">Ver productos</a>
+    </div>
+  } @else {
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        @for (item of carritoService.carrito(); track $index; let i = $index) {
+          <div class="carrito-item d-flex align-items-center gap-3 mb-3 p-3">
+            <img [src]="item.imagen" [alt]="item.nombre" class="carrito-img" />
+            <div class="flex-grow-1">
+              <h5 class="mb-1">{{ item.nombre }}</h5>
+              <p class="mb-0 text-muted">{{ item.categoria }}</p>
+              <p class="mb-0 fw-bold">
+                {{ item.precio | currency: 'COP' : 'symbol' : '1.0-0' }}
+              </p>
+            </div>
+            <button class="btn btn-outline-danger btn-sm" (click)="eliminar(i)">Quitar</button>
+          </div>
+        }
+
+        <div class="total-box p-4 mt-4">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <span class="fs-5 fw-bold">Total</span>
+            <span class="fs-4 fw-bold">
+              {{ carritoService.total() | currency: 'COP' : 'symbol' : '1.0-0' }}
+            </span>
+          </div>
+          <div class="d-flex gap-2 flex-wrap">
+            <button class="btn btn-dark flex-grow-1">Finalizar compra</button>
+            <button class="btn btn-outline-secondary" (click)="vaciar()">Vaciar carrito</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+</section>

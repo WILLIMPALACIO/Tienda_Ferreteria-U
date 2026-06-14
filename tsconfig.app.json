@@ -4,6 +4,7 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "./out-tsc/app",
+    "composite": true,
     "types": [
       "node"
     ]

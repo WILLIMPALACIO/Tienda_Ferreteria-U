@@ -1,54 +1,35 @@
-import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { DetallesService } from './detalles.service';
+import { CurrencyPipe } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, RouterLink } from '@angular/router';
+import { Producto } from '../../models/producto.model';
+import { CarritoService } from '../../services/carrito.service';
+import { ProductosService } from '../../services/productos.service';
 
 @Component({
   selector: 'app-detalles',
-  imports: [CommonModule],
+  imports: [CurrencyPipe, RouterLink],
   templateUrl: './detalles.html',
   styleUrl: './detalles.css',
 })
-export class Detalles {
-  product = {
-    id: 1,
-    nombre: 'Zapatillas Adidas Superstar',
-    precio: 299000,
-    descripcion: '',
-    color: ['Rojo', 'Negro', 'Verde', 'Amarillo', 'Azul'],
-    tallas: [32, 34, 36, 38, 40],
+export class Detalles implements OnInit {
+  producto: Producto | undefined;
 
-    imagen: [
-      'assets/img/taladro.png',
-    ],
-  };
-  //product: any = null;
-  activeImage = 0;
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private productosService: ProductosService,
+    private carritoService: CarritoService
+  ) {}
 
-  constructor(private activatedRoute: ActivatedRoute, public detalleService: DetallesService) {}
-
-  ngOnInit() {
-    const producto_id = this.activatedRoute.snapshot.params['id'];
-    this.detalleService.loading = true;
-    // this.detalleService.obtenerProducto(producto_id).subscribe((response: any) => {
-    //   this.product = response;
-    //   this.detalleService.loading = false;
-    // });
-    console.log('ruta: ');
+  ngOnInit(): void {
+    const id = Number(this.activatedRoute.snapshot.params['id']);
+    this.producto = this.productosService.obtenerPorId(id);
   }
-  oneAdd() {
-    if (this.activeImage >= 0 && this.activeImage < this.product.imagen.length - 1) {
-      this.activeImage++;
+
+  agregarAlCarrito(): void {
+    if (!this.producto) {
+      return;
     }
-  }
-
-  removeOne() {
-    if (this.activeImage > 0) {
-      this.activeImage--;
-    }
-  }
-
-  seeImagen(index: number) {
-    this.activeImage = index;
+    this.carritoService.agregar(this.producto);
+    alert('Producto agregado');
   }
 }

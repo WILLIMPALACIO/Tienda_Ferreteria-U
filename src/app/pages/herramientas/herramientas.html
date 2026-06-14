@@ -1,10 +1,6 @@
 <section class="productos-container">
-  <!-- Banner promocional -->
   <div class="promo-banner bg-warning text-dark py-3 border-top border-bottom shadow-sm">
-    <div
-      class="container d-flex flex-column flex-md-row justify-content-between align-items-center"
-    >
-      <!-- Texto principal -->
+    <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
       <div class="d-flex align-items-center gap-3">
         <i class="bi bi-tools fs-2 text-dark"></i>
         <div>
@@ -16,25 +12,23 @@
         </div>
       </div>
 
-      <!-- Botón de acción -->
-      <a
-        href="#productos"
-        class="btn btn-dark mt-3 mt-md-0 fw-bold d-flex align-items-center gap-2"
-      >
+      <a href="#productos" class="btn btn-dark mt-3 mt-md-0 fw-bold d-flex align-items-center gap-2">
         <span>Ver productos</span>
         <i class="bi bi-arrow-right-circle"></i>
       </a>
     </div>
   </div>
 
-  <div class="cards">
-    @for (item of productos; track $index) {
-    <div class="card" (click)="navigation(item.id)">
-      <img [src]="item.imagen" />
-      <h3>{{ item.nombre }}</h3>
-      <p class="precio">${{ item.precio }}</p>
-      <button>Agregar al carrito</button>
-    </div>
+  <div id="productos" class="cards">
+    @for (item of productos; track item.id) {
+      <div class="card" (click)="navigation(item.id)">
+        <img [src]="item.imagen" [alt]="item.nombre" />
+        <h3>{{ item.nombre }}</h3>
+        <p class="precio">{{ item.precio | currency: 'COP' : 'symbol' : '1.0-0' }}</p>
+        <button (click)="agregarAlCarrito(item); $event.stopPropagation()">
+          Agregar al carrito
+        </button>
+      </div>
     }
   </div>
 </section>

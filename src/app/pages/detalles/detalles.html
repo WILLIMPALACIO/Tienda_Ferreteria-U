@@ -1,33 +1,29 @@
-<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-
-    <!-- Indicadores -->
-    <div class="carousel-indicators">
-        @for (item of product.imagen; track $index; let index = $index) {
-        <button type="button" [attr.data-bs-target]="'#carouselExampleIndicators'" [attr.data-bs-slide-to]="index"
-            [ngClass]="{'active': index === activeImage}" aria-current="true" aria-label="Slide {{index + 1}}">
+<section class="container my-5">
+  @if (producto) {
+    <div class="row justify-content-center align-items-center g-4">
+      <div class="col-md-5">
+        <img class="detalle-img w-100" [src]="producto.imagen" [alt]="producto.nombre" />
+      </div>
+      <div class="col-md-5">
+        <span class="badge bg-warning text-dark mb-2">{{ producto.categoria }}</span>
+        <h1 class="fw-bold">{{ producto.nombre }}</h1>
+        <p class="precio fs-3 fw-bold">
+          {{ producto.precio | currency: 'COP' : 'symbol' : '1.0-0' }}
+        </p>
+        <p class="text-muted">
+          Herramienta de calidad para tu proyecto de construcción o reparación en el hogar.
+        </p>
+        <button class="btn btn-dark btn-lg me-2" (click)="agregarAlCarrito()">
+          Agregar al carrito
         </button>
-        }
+        <a routerLink="/home" class="btn btn-outline-secondary btn-lg">Volver</a>
+      </div>
     </div>
-
-    <!-- Imágenes -->
-    <div class="carousel-inner rounded-3 shadow">
-        @for (item of product.imagen; track $index; let index = $index) {
-        <div class="carousel-item" [ngClass]="{'active': index === activeImage}"
-            [ngStyle]="{'background': index===activeImage?'red':'black'}">
-            <img class="d-block w-100" [src]="item" alt="Imagen {{index + 1}}">
-        </div>
-        }
+  } @else {
+    <div class="text-center py-5">
+      <h2 class="fw-bold">Producto no encontrado</h2>
+      <p class="text-muted">El producto que buscas no existe en nuestro catálogo.</p>
+      <a routerLink="/home" class="btn btn-dark mt-3">Volver al inicio</a>
     </div>
-
-    <!-- Botón anterior -->
-    <button class="carousel-control-prev custom-btn" type="button" (click)="removeOne()">
-        <span class="carousel-control-prev-icon"></span>
-    </button>
-
-    <!-- Botón siguiente -->
-    <button class="carousel-control-next custom-btn" type="button" (click)="oneAdd()">
-        <span class="carousel-control-next-icon"></span>
-    </button>
-
-</div>
-<h1 class="text-center mt-4">{{product.nombre}}</h1>
+  }
+</section>

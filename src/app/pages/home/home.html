@@ -1,40 +1,60 @@
 <section class="productos-container">
   <!-- Banner promocional -->
   <div class="promo-banner bg-warning text-dark py-3 border-top border-bottom shadow-sm">
-  <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
-    
-    <!-- Texto principal -->
-    <div class="d-flex align-items-center gap-3">
-      <i class="bi bi-tools fs-2 text-dark"></i>
-      <div>
-        <h5 class="mb-0 fw-bold text-uppercase">¡Construye tu hogar con calidad!</h5>
-        <p class="mb-0 small">Encuentra todo lo que necesitas en un solo lugar: herramientas, pinturas, materiales y más.</p>
+    <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
+      <div class="d-flex align-items-center gap-3">
+        <i class="bi bi-tools fs-2 text-dark"></i>
+        <div>
+          <h5 class="mb-0 fw-bold text-uppercase">¡Construye tu hogar con calidad!</h5>
+          <p class="mb-0 small">
+            Encuentra todo lo que necesitas en un solo lugar: herramientas, pinturas, materiales y
+            más.
+          </p>
+        </div>
       </div>
+
+      <a href="#productos" class="btn btn-dark mt-3 mt-md-0 fw-bold d-flex align-items-center gap-2">
+        <span>Ver productos</span>
+        <i class="bi bi-arrow-right-circle"></i>
+      </a>
     </div>
-
-    <!-- Botón de acción -->
-    <a href="#productos" class="btn btn-dark mt-3 mt-md-0 fw-bold d-flex align-items-center gap-2">
-      <span>Ver productos</span>
-      <i class="bi bi-arrow-right-circle"></i>
-    </a>
   </div>
-</div>
-
 
   <div class="imagen-fondo">
     <img src="../../../assets/img/FONDO.jpg" alt="Fondo" />
   </div>
 
-  
-  
-  <div class="cards">
-    @for (item of productos; track $index) {
-    <div class="card" (click)="navigation(item.id)">
-      <img [src]="item.imagen" />
-      <h3>{{ item.nombre }}</h3>
-      <p class="precio">${{ item.precio}}</p>
-      <button>Agregar al carrito</button>
+  <section class="container text-center my-5">
+    <h1 class="display-4 fw-bold">Todo para tu construcción</h1>
+    <p class="lead">
+      Herramientas, materiales y equipos de calidad para profesionales y hogares.
+    </p>
+  </section>
+
+  <div class="container my-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Buscar herramienta..."
+          [(ngModel)]="textoBusqueda"
+          (input)="buscar()"
+        />
+      </div>
     </div>
+  </div>
+
+  <div id="productos" class="cards">
+    @for (item of productos; track item.id) {
+      <div class="card" (click)="navigation(item.id)">
+        <img [src]="item.imagen" [alt]="item.nombre" />
+        <h3>{{ item.nombre }}</h3>
+        <p class="precio">{{ item.precio | currency: 'COP' : 'symbol' : '1.0-0' }}</p>
+        <button (click)="agregarAlCarrito(item); $event.stopPropagation()">
+          Agregar al carrito
+        </button>
+      </div>
     }
   </div>
 </section>

@@ -1,44 +1,55 @@
-import { Detalles } from './../detalles/detalles';
 import { Component } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+
+import { ProductosService } from '../../services/productos.service';
+import { CarritoService } from '../../services/carrito.service';
+
 @Component({
   selector: 'app-home',
-  imports: [],
+  standalone: true,
+  imports: [
+    CommonModule,
+    FormsModule
+  ],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
 export class Home {
-  productos = [
-  {
-    id: 1,
-    nombre: 'Taladro',
-    precio: 320000,
-    imagen: 'assets/img/taladro.png',
-  },
-  {
-    id: 2,
-    nombre: 'Pulidora',
-    precio: 410000,
-    imagen: 'assets/img/pulidora.png',
-  },
-  {
-    id: 3,
-    nombre: 'Martillo',
-    precio: 32000,
-    imagen: 'assets/img/martillo.png',
-  },
-  {
-    id: 4,
-    nombre: 'Nivel',
-    precio: 27000,
-    imagen: 'assets/img/nivel.png',
-  },
 
-  ];
+  productos: any[] = [];
+  textoBusqueda = '';
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private productosService: ProductosService,
+    private carritoService: CarritoService
+  ) {
+    this.productos =
+      this.productosService.obtenerProductos();
+  }
+
+  agregarAlCarrito(producto: any) {
+    this.carritoService.agregar(producto);
+    alert('Producto agregado al carrito');
+  }
 
   navigation(id: number) {
     this.router.navigate(['/detalles', id]);
+  }
+
+  buscar() {
+
+    const productos =
+      this.productosService.obtenerProductos();
+
+    this.productos = productos.filter((p: any) =>
+      p.nombre
+        .toLowerCase()
+        .includes(
+          this.textoBusqueda.toLowerCase()
+        )
+    );
   }
 }
