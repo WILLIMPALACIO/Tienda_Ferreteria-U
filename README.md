@@ -4,13 +4,5 @@ Aplicación web desarrollada para la gestión y visualización de productos de u
 
 <img src="https://skillicons.dev/icons?i=angular,ts,html,css,bootstrap" />
 
-✨ Funcionalidades
-
-- Catálogo de productos.
-- Visualización de detalles de cada producto.
-- Búsqueda de herramientas en tiempo real.
-- Carrito de compras.
-- Interfaz responsiva con Bootstrap.
-- Navegación entre secciones mediante Angular Router.
 
 👨‍💻 Autor: Willim Palacio
